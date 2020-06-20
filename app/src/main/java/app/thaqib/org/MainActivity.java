@@ -35,5 +35,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        viewPager.setCurrentItem(1, true);
     }
 }

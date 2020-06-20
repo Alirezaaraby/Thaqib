@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Thaqib</string>
-    <string name="tab_text_1">اخبار</string>
-    <string name="tab_text_2">رویدادها</string>
+    <string name="tab_text_2">اخبار</string>
+    <string name="tab_text_1">رویدادها</string>
     <string name="tab_text_3">کلاسها</string>
 </resources>
