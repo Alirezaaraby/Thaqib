@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import app.thaqib.org.Classes;
+import app.thaqib.org.Events;
+import app.thaqib.org.News;
 import app.thaqib.org.R;
 
 /**
@@ -27,10 +30,19 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
-    }
+        Fragment fragment = null;
+        switch (position){
+            case 0:
+                fragment = new Events();
+                break;
+            case 1:
+                fragment = new News();
+                break;
+            case 2:
+                fragment = new Classes();
+                break;
+        }
+        return fragment;    }
 
     @Nullable
     @Override
