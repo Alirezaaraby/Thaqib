@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.baoyz.widget.PullRefreshLayout;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,7 +74,7 @@ public class Classes extends Fragment {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait...");
+            pDialog.setMessage("درحال دریافت اطلاعات...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -142,7 +143,7 @@ public class Classes extends Fragment {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(),
-                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                "به اینترنت متصل نیستید! اینترنت خود را چک کنید و دوباره امتحان کنید.",
                                 Toast.LENGTH_LONG)
                                 .show();
                     }

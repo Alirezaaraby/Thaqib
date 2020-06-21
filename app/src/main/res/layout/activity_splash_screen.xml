@@ -11,7 +11,8 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/Splash_Screen_Bg"/>
 
     <com.agrawalsuneet.dotsloader.loaders.LazyLoader
         android:id="@+id/Container_Progress"

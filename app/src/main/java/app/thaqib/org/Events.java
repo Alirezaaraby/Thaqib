@@ -143,7 +143,7 @@ public class Events extends Fragment {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(),
-                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                "به اینترنت متصل نیستید! اینترنت خود را چک کنید و دوباره امتحان کنید.",
                                 Toast.LENGTH_LONG)
                                 .show();
                     }
