@@ -6,26 +6,32 @@
     android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/name_event"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="loading"
+        android:gravity="center"/>
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/description_event"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:text="سلام"/>
 
     <TextView
-        android:id="@+id/mobile"
-        android:layout_width="wrap_content"
+        android:id="@+id/date_and_time_event"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="date and time"
+        android:gravity="center"
+        android:textAlignment="center"/>
 </LinearLayout>

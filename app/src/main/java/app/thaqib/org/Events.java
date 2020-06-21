@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,8 +27,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static android.content.ContentValues.TAG;
-
 public class Events extends Fragment {
     ListView list;
     PullRefreshLayout Refresh;
@@ -39,7 +36,7 @@ public class Events extends Fragment {
     private ListView lv;
 
     // URL to get contacts JSON
-    private static String url = "https://api.androidhive.info/contacts/";
+    private static String url = "https://api.npoint.io/92b7adc24283c3d04844";
 
     ArrayList<HashMap<String, String>> contactList;
     private Handler mHandler = new Handler(Looper.getMainLooper());
@@ -94,29 +91,20 @@ public class Events extends Fragment {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("contacts");
+                    JSONArray contacts = jsonObj.getJSONArray("Event");
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
 
-                        String id = c.getString("id");
-                        String name = c.getString("name");
-                        String email = c.getString("email");
-                        String address = c.getString("address");
-                        String gender = c.getString("gender");
-
-                        // Phone node is JSON Object
-                        JSONObject phone = c.getJSONObject("phone");
-                        String mobile = phone.getString("mobile");
-                        String home = phone.getString("home");
-                        String office = phone.getString("office");
+                        String name = c.getString("Name");
+                        String email = c.getString("Des");
+                        String mobile = c.getString("Date_Time");
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        contact.put("id", id);
                         contact.put("name", name);
                         contact.put("email", email);
                         contact.put("mobile", mobile);
@@ -165,9 +153,9 @@ public class Events extends Fragment {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.list_item, new String[]{"name", "email",
-                    "mobile"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile});
+                    R.layout.list_item_events, new String[]{"name", "email",
+                    "mobile"}, new int[]{R.id.name_event,
+                    R.id.description_event, R.id.date_and_time_event});
 
             lv.setAdapter(adapter);
         }

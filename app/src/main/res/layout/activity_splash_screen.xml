@@ -12,7 +12,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:srcCompat="@drawable/Splash_Screen_Bg"/>
+        android:src="@drawable/splash_screen_bg"/>
 
     <com.agrawalsuneet.dotsloader.loaders.LazyLoader
         android:id="@+id/Container_Progress"
