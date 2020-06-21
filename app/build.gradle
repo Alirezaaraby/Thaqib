@@ -36,4 +36,5 @@ dependencies {
     implementation 'me.saket:better-link-movement-method:2.2.0'
     implementation("com.squareup.okhttp3:okhttp:4.7.2")
     testImplementation("com.squareup.okhttp3:okhttp-urlconnection:4.7.2")
+    implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
 }
