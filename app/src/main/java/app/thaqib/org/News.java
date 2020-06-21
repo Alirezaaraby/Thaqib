@@ -35,7 +35,7 @@ public class News extends Fragment {
     private ListView lv;
 
     // URL to get contacts JSON
-    private static String url = "https://api.androidhive.info/contacts/";
+    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/7dac935beb6d1789409206b90b512318/raw/thqaib_news.json";
 
     ArrayList<HashMap<String, String>> contactList;
     private Handler mHandler = new Handler(Looper.getMainLooper());
@@ -71,7 +71,7 @@ public class News extends Fragment {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait...");
+            pDialog.setMessage("درحال دریافت اطلاعات...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -91,14 +91,14 @@ public class News extends Fragment {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("contacts");
+                    JSONArray contacts = jsonObj.getJSONArray("News");
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
 
-                        String name = c.getString("name");
-                        String email = c.getString("email");
+                        String name = c.getString("Name");
+                        String email = c.getString("Des");
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();

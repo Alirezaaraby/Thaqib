@@ -36,7 +36,7 @@ public class Events extends Fragment {
     private ListView lv;
 
     // URL to get contacts JSON
-    private static String url = "https://api.npoint.io/92b7adc24283c3d04844";
+    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/9ef2f741c98242a555e189a9adbefe16/raw/thaqib_events.json";
 
     ArrayList<HashMap<String, String>> contactList;
     private Handler mHandler = new Handler(Looper.getMainLooper());
@@ -71,7 +71,7 @@ public class Events extends Fragment {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait...");
+            pDialog.setMessage("درحال دریافت اطلاعات...");
             pDialog.setCancelable(false);
             pDialog.show();
 

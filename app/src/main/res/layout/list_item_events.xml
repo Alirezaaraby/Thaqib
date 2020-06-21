@@ -14,7 +14,6 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="loading"
         android:gravity="center"/>
 
     <TextView
@@ -22,16 +21,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:textColor="@color/colorAccent"
-        android:text="سلام"/>
+        android:textColor="#123456"/>
 
     <TextView
         android:id="@+id/date_and_time_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#5d5d5d"
+        android:textColor="#009688"
         android:textStyle="bold"
-        android:text="date and time"
         android:gravity="center"
         android:textAlignment="center"/>
 </LinearLayout>
