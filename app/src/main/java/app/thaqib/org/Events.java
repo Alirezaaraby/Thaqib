@@ -57,6 +57,7 @@ public class Events extends Fragment {
         Refresh.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                contactList.clear();
                 new GetContacts().execute();
                 Refresh.setRefreshing(false);
             }

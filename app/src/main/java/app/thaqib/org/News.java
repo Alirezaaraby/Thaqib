@@ -42,7 +42,7 @@ public class News extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.classes_fragment, container, false);
         lv = (ListView) view.findViewById(R.id.classes_list);
 
@@ -57,6 +57,7 @@ public class News extends Fragment {
         Refresh.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                contactList.clear();
                 new News.GetContacts().execute();
                 Refresh.setRefreshing(false);
             }

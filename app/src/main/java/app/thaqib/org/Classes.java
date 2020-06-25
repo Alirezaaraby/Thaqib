@@ -58,6 +58,7 @@ public class Classes extends Fragment {
         Refresh.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                contactList.clear();
                 new Classes.GetContacts().execute();
                 Refresh.setRefreshing(false);
             }
