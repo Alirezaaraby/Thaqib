@@ -35,7 +35,7 @@ public class News extends Fragment {
     private ListView lv;
 
     // URL to get contacts JSON
-    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/7dac935beb6d1789409206b90b512318/raw/thqaib_news.json";
+    private static String url = "";
 
     ArrayList<HashMap<String, String>> contactList;
     private Handler mHandler = new Handler(Looper.getMainLooper());
