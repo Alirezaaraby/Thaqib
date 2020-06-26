@@ -44,13 +44,13 @@ public class News extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.classes_fragment, container, false);
-        lv = (ListView) view.findViewById(R.id.classes_list);
+        lv = view.findViewById(R.id.classes_list);
 
         Refresh = view.findViewById(R.id.classes_pull_to_refresh);
 
         contactList = new ArrayList<>();
 
-        lv = (ListView) view.findViewById(R.id.classes_list);
+        lv = view.findViewById(R.id.classes_list);
 
         new News.GetNews().execute();
 
@@ -99,14 +99,14 @@ public class News extends Fragment {
                         JSONObject c = News.getJSONObject(i);
 
                         String name = c.getString("Name");
-                        String email = c.getString("Des");
+                        String descriprion = c.getString("Des");
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
                         contact.put("name", name);
-                        contact.put("email", email);
+                        contact.put("Desc", descriprion);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -152,7 +152,7 @@ public class News extends Fragment {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.list_item_news, new String[]{"name", "email"}, new int[]{R.id.name_news,
+                    R.layout.list_item_news, new String[]{"name", "Desc"}, new int[]{R.id.name_news,
                     R.id.description_news});
 
             lv.setAdapter(adapter);

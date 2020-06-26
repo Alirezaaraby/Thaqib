@@ -45,13 +45,13 @@ public class Classes extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.classes_fragment, container, false);
-        lv = (ListView) view.findViewById(R.id.classes_list);
+        lv = view.findViewById(R.id.classes_list);
 
         Refresh = view.findViewById(R.id.classes_pull_to_refresh);
 
         contactList = new ArrayList<>();
 
-        lv = (ListView) view.findViewById(R.id.classes_list);
+        lv = view.findViewById(R.id.classes_list);
 
         new Classes.GetClasses().execute();
 
@@ -123,7 +123,7 @@ public class Classes extends Fragment {
                         public void run() {
                             Toast.makeText(getActivity(),
                                     "Json parsing error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG)
+                                    Toast.LENGTH_SHORT)
                                     .show();
                         }
                     });
@@ -136,7 +136,7 @@ public class Classes extends Fragment {
                     public void run() {
                         Toast.makeText(getActivity(),
                                 "به اینترنت متصل نیستید! اینترنت خود را چک کنید و دوباره امتحان کنید.",
-                                Toast.LENGTH_LONG)
+                                Toast.LENGTH_SHORT)
                                 .show();
                     }
                 });

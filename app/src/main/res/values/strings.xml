@@ -4,4 +4,6 @@
     <string name="tab_text_1">رویدادها</string>
     <string name="tab_text_3">کلاسها</string>
     <string name="codded_by_alirezaaraby">Codded By : AlirezaAraby</string>
+    <string name="About_Menu">About</string>
+    <string name="Check_Update_Menu">Check For Latest Version</string>
 </resources>

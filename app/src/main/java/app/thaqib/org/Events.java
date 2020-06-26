@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.baoyz.widget.PullRefreshLayout;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +51,7 @@ public class Events extends Fragment {
 
         contactList = new ArrayList<>();
 
-        lv = (ListView) view.findViewById(R.id.events_list);
+        lv = view.findViewById(R.id.events_list);
 
         new GetEvents().execute();
 
@@ -99,16 +100,16 @@ public class Events extends Fragment {
                         JSONObject c = Events.getJSONObject(i);
 
                         String name = c.getString("Name");
-                        String email = c.getString("Des");
-                        String mobile = c.getString("Date_Time");
+                        String descriprion = c.getString("Des");
+                        String D_T = c.getString("Date_Time");
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
                         contact.put("name", name);
-                        contact.put("email", email);
-                        contact.put("mobile", mobile);
+                        contact.put("Desc", descriprion);
+                        contact.put("Date_Time", D_T);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -154,8 +155,8 @@ public class Events extends Fragment {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.list_item_events, new String[]{"name", "email",
-                    "mobile"}, new int[]{R.id.name_event,
+                    R.layout.list_item_events, new String[]{"name", "Desc",
+                    "Date_Time"}, new int[]{R.id.name_event,
                     R.id.description_event, R.id.date_and_time_event});
 
             lv.setAdapter(adapter);
