@@ -53,20 +53,20 @@ public class Classes extends Fragment {
 
         lv = (ListView) view.findViewById(R.id.classes_list);
 
-        new Classes.GetContacts().execute();
+        new Classes.GetClasses().execute();
 
         Refresh.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 contactList.clear();
-                new Classes.GetContacts().execute();
+                new Classes.GetClasses().execute();
                 Refresh.setRefreshing(false);
             }
         });
 
         return view;
     }
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetClasses extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {

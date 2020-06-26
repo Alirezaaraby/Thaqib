@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#0C0C0C</color>
-    <color name="colorAccent">#FF9800</color>
+    <color name="colorAccent">#3494E6</color>
     <color name="DotsLoader">#9be884</color>
 </resources>

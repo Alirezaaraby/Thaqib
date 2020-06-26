@@ -4,15 +4,15 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:gravity="center"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/splash_screen_bg"/>
+        android:src="@drawable/splash_screen_bg" />
 
     <com.agrawalsuneet.dotsloader.loaders.LazyLoader
         android:id="@+id/Container_Progress"
@@ -30,5 +30,13 @@
         app:lazyloader_secondDelayDur="300"
         app:lazyloader_secondDotColor="@color/DotsLoader"
         app:lazyloader_thirdDotColor="@color/DotsLoader" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="@string/codded_by_alirezaaraby"
+        android:textColor="#ffffff"/>
 
 </LinearLayout>
