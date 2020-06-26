@@ -37,7 +37,7 @@ public class Events extends Fragment {
     private ListView lv;
 
     // URL to get contacts JSON
-    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/9ef2f741c98242a555e189a9adbefe16/raw/thaqib_events.json";
+    private static String url = "";
 
     ArrayList<HashMap<String, String>> contactList;
     private Handler mHandler = new Handler(Looper.getMainLooper());
