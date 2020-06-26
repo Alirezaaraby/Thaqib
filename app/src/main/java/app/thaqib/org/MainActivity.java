@@ -44,7 +44,7 @@ import app.thaqib.org.ui.main.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     String versionName;
-    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/7ab69f201cef330c7f24fdb7c151d376/raw/thaqib_head.json";
+    private static String url = "";
     private Handler mHandler = new Handler(Looper.getMainLooper());
     private ProgressDialog pDialog;
     String Version = "";
