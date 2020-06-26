@@ -1,5 +1,7 @@
 package app.thaqib.org;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,13 +20,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStructure;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -37,8 +44,14 @@ import app.thaqib.org.ui.main.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     String versionName;
-    private static String url = "https://api.npoint.io/c23c4a2fb75309f4020b";
+    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/7ab69f201cef330c7f24fdb7c151d376/raw/thaqib_head.json";
     private Handler mHandler = new Handler(Looper.getMainLooper());
+    private ProgressDialog pDialog;
+    String Version = "";
+    String Tittle_txt = "";
+    String Description_txt = "";
+    String Button_txt = "";
+    public boolean Internet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,122 +102,120 @@ public class MainActivity extends AppCompatActivity {
 
         }
         if (id == R.id.action_checkupdate) {
-//            new GetVersion().execute();
+            new GetVersion().execute();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-//    private class GetVersion extends AsyncTask<Void, Void, Void> {
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//
-//            pDialog = new SpotsDialog.Builder().setContext(MainActivity.this).build();
-//            pDialog.show();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(final Void... arg0) {
-//            JSONObject JsonMain = null;
-//            HttpHandler sh = new HttpHandler();
-//
-//            String jsonStr = sh.makeServiceCall(url);
-//
-//            Log.e(TAG, "Response from url: " + jsonStr);
-//
-//            if (jsonStr != null) {
-//                try {
-//                    JSONObject jsonObj = new JSONObject(jsonStr);
-//
-//                    JsonMain = jsonObj.getJSONObject("Header");
-//                    Tittle_txt = JsonMain.getString("Version_Tittle");
-//                    Description_txt = JsonMain.getString("Version_Description");
-//                    Version = JsonMain.getString("Version");
-//                    Button_txt = JsonMain.getString("Version_Button_Text");
-//                    Internet = true;
-//
-//                }
-//
-//                catch (final JSONException e) {
-//                    Log.e(TAG, "Json parsing error: " + e.getMessage());
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            View parentLayout = findViewById(R.id.coordinator_layout);
-//                            Snackbar.make(parentLayout,"Json parsing error", Snackbar.LENGTH_LONG)
-//                                    .setAction("Action", null).show();
-//                            Internet = false;
-//                        }
-//                    });
-//                }
-//            }
-//
-//            else {
-//                Log.e(TAG, "Couldn't get json from server.");
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        View parentLayout = findViewById(R.id.coordinator_layout);
-//                        Snackbar.make(parentLayout,"No Internet Connection", Snackbar.LENGTH_LONG)
-//                                .setAction("Action", null).show();
-//                        Internet = false;
-//                    }
-//                });
-//            }
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Void result) {
-//
-//            super.onPostExecute(result);
-//
-//            if (Internet){
-//                pDialog.dismiss();
-//                if (!Version.equals(versionName)) {
-//                    showDialog(MainActivity.this,"");
-//                }
-//                else{
-//                    View parentLayout = findViewById(R.id.coordinator_layout);
-//                    Snackbar.make(parentLayout,"Your Version Is Up To Date", Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                }
-//            }
-//            else {
-//                pDialog.dismiss();
-//            }
-//
-//        }
-//    }
+    private class GetVersion extends AsyncTask<Void, Void, Void> {
 
-//    public void showDialog(Activity activity,String msg){
-//        if (Internet) {
-//            final Dialog dialog = new Dialog(activity);
-//            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            dialog.setCancelable(false);
-//            dialog.setContentView(R.layout.versiondialog);
-//
-//            TextView Tittle = dialog.findViewById(R.id.Tittle);
-//            TextView Des = dialog.findViewById(R.id.Des);
-//            Tittle.setText(Tittle_txt);
-//            Des.setText(Description_txt);
-//
-//            Des.setMovementMethod(LinkMovementMethod.getInstance());
-//
-//            Linkify.addLinks(Des, Linkify.WEB_URLS);
-//
-//            Button dialogButton = dialog.findViewById(R.id.buttonOk);
-//            dialogButton.setText(Button_txt);
-//            dialogButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    dialog.dismiss();
-//                }
-//            });
-//
-//            dialog.show();
-//        }
-//    }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            pDialog = new ProgressDialog(MainActivity.this);
+            pDialog.setMessage("درحال دریافت اطلاعات...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(final Void... arg0) {
+            JSONObject JsonMain = null;
+            HttpHandler sh = new HttpHandler();
+
+            String jsonStr = sh.makeServiceCall(url);
+
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    JsonMain = jsonObj.getJSONObject("Header");
+                    Tittle_txt = JsonMain.getString("Version_Tittle");
+                    Description_txt = JsonMain.getString("Version_Description");
+                    Version = JsonMain.getString("Version");
+                    Button_txt = JsonMain.getString("Version_Button_Text");
+                    Internet = true;
+
+                }
+
+                catch (final JSONException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            View parentLayout = findViewById(R.id.constraintLayout);
+                            Snackbar.make(parentLayout,"Json parsing error", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                            Internet = false;
+                        }
+                    });
+                }
+            }
+
+            else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        View parentLayout = findViewById(R.id.constraintLayout);
+                        Snackbar.make(parentLayout,"No Internet Connection", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        Internet = false;
+                    }
+                });
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+
+            super.onPostExecute(result);
+
+            if (Internet){
+                pDialog.dismiss();
+                if (!Version.equals(versionName)) {
+                    showDialog(MainActivity.this,"");
+                }
+                else{
+                    View parentLayout = findViewById(R.id.constraintLayout);
+                    Snackbar.make(parentLayout,"Your Version Is Up To Date", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            }
+            else {
+                pDialog.dismiss();
+            }
+
+        }
+    }
+
+    public void showDialog(Activity activity, String msg){
+        if (Internet) {
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.versiondialog);
+
+            TextView Tittle = dialog.findViewById(R.id.Tittle);
+            TextView Des = dialog.findViewById(R.id.Des);
+            Tittle.setText(Tittle_txt);
+            Des.setText(Description_txt);
+
+            Des.setMovementMethod(LinkMovementMethod.getInstance());
+
+            Linkify.addLinks(Des, Linkify.WEB_URLS);
+
+            Button dialogButton = dialog.findViewById(R.id.buttonOk);
+            dialogButton.setText(Button_txt);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+        }
+    }
 }
