@@ -36,7 +36,7 @@ public class Classes extends Fragment {
     private ListView lv;
 
     // URL to get contacts JSON
-    private static String url = "https://gist.githubusercontent.com/Alirezaaraby/52198b92a0afb4518d750a68d1670537/raw/thaqib_classes.json";
+    private static String url = "";
 
     ArrayList<HashMap<String, String>> contactList;
     private Handler mHandler = new Handler(Looper.getMainLooper());
