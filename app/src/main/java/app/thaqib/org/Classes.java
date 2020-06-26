@@ -93,25 +93,25 @@ public class Classes extends Fragment {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("Classes");
+                    JSONArray Classes = jsonObj.getJSONArray("Classes");
 
                     // looping through All Contacts
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    for (int i = 0; i < Classes.length(); i++) {
+                        JSONObject c = Classes.getJSONObject(i);
 
                         String name = c.getString("Name");
-                        String email = c.getString("Des");
-                        String gender = c.getString("Date_Time");
-                        String mobile = c.getString("During");
+                        String Description = c.getString("Des");
+                        String Time = c.getString("Date_Time");
+                        String During = c.getString("During");
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
                         contact.put("name", name);
-                        contact.put("email", email);
-                        contact.put("mobile", mobile);
-                        contact.put("gender", gender);
+                        contact.put("Desc", Description);
+                        contact.put("during", During);
+                        contact.put("D_T", Time);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -157,8 +157,8 @@ public class Classes extends Fragment {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.list_item_classes, new String[]{"name", "email",
-                    "mobile","gender"}, new int[]{R.id.name_class,
+                    R.layout.list_item_classes, new String[]{"name", "Desc",
+                    "during","D_T"}, new int[]{R.id.name_class,
                     R.id.description_class, R.id.date_and_time_class,R.id.during_class});
 
             lv.setAdapter(adapter);

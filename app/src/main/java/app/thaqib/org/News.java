@@ -52,20 +52,20 @@ public class News extends Fragment {
 
         lv = (ListView) view.findViewById(R.id.classes_list);
 
-        new News.GetContacts().execute();
+        new News.GetNews().execute();
 
         Refresh.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 contactList.clear();
-                new News.GetContacts().execute();
+                new News.GetNews().execute();
                 Refresh.setRefreshing(false);
             }
         });
 
         return view;
     }
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetNews extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -92,11 +92,11 @@ public class News extends Fragment {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("News");
+                    JSONArray News = jsonObj.getJSONArray("News");
 
                     // looping through All Contacts
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    for (int i = 0; i < News.length(); i++) {
+                        JSONObject c = News.getJSONObject(i);
 
                         String name = c.getString("Name");
                         String email = c.getString("Des");
