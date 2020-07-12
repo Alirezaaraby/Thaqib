@@ -6,3 +6,8 @@
 * Download From [Github]
 
 [cafebazaar]: <http://cafebazaar.ir/>
+
+# Use
+```sh
+$ git clone https://github.com/Alirezaaraby/Thaqib
+```
