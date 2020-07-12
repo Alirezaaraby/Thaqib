@@ -1,5 +1,5 @@
-# The Official Thaqib Astronomical Organisation's Application
-You Can Get The Latest Informations And News From The Thaqib Astronomical Organisation With This Application
+# Thaqib
+The Official Thaqib Astronomical Organisation's Application. You Can Get The Latest Informations And News From The Thaqib Astronomical Organisation With This Application
 ### Download Part:
 * Download From [CafeBazaar]
 * Download From [Google Drive]
